@@ -1,0 +1,33 @@
+<h1>Leaflet Map App</h1>
+	<div leaflet style="height: 300px;"
+
+       [leafletOptions]="options"
+       [(leafletCenter)]="options.center"
+       [(leafletZoom)]="options.zoom"
+			 [leafletBaseLayers]="baseLayers"
+       [leafletLayersControlOptions]="layersControlOptions"
+       [leafletLayersControl]="layersControl"
+       >
+		</div>
+
+
+    <input placeholder="Enter the Zoom You Want to set" [(ngModel)]="Zoom">
+    <button (click)="ZoomTo()"> Go!</button>
+
+    <input placeholder="Enter the location You Want to go" [(ngModel)]="Lat">
+    <input placeholder="Enter the location You Want to go" [(ngModel)]="Long">
+    <button (click)="PanTo()"> Go!</button>
+
+    <br>
+    <input placeholder="enter the place you want to search" [(ngModel)]="SearchLocation">
+    <button (click)="search()">Search</button>
+
+    <ul>
+      <li *ngFor="let location of FoundLocation">
+      {{location['name']}} <button (click)="setMarker(location['geocodePoints'][0]['coordinates'][0],location['geocodePoints'][0]['coordinates'][1])">Choose</button>
+      {{location['geocodePoints'][0]['coordinates']}}
+      </li>
+      
+    </ul>
+
+   
